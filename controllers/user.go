@@ -5,15 +5,15 @@ import (
 	"regexp"
 )
 type userController struct{
-	userIdPattern *regexp.Regexp
+	userIDPattern *regexp.Regexp
 }
 
-func (uc userController ) ServerHTTP (w http.ResponseWriter, r *http.Request){
+func (uc userController ) ServeHTTP (w http.ResponseWriter, r *http.Request){
 	w.Write([]byte("Welcome to the User Controller"))
 }
 
-func newUserControler () *userController{
+func newUserController () *userController{
 	return &userController{
-		userIdPattern: regexp.MustCompile(`^/users/(\d+)/?`)
+		userIDPattern: regexp.MustCompile(`^/users/(\d+)/?`),
 	}
 }
